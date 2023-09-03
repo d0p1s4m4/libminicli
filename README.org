@@ -1,0 +1,37 @@
+* Libminicli
+
+Simple cli parser in c.
+
+*** Usage
+
+#+BEGIN_SRC C
+  #include <stdlib.h>
+  #include <stdio.h>
+  #include <minicli.h>
+
+  static const CliArgument arguments[] = {
+    {0, NULL, 0, NULL}
+  };
+
+  int
+  main(int argc, char **argv)
+  {
+    int c;
+
+    mcli_set_program_name(argv[0]);
+    mcli_set_version("1.0.0");
+    mcli_set_desc("Just a simple example"); /* optional */
+    mcli_set_bugreport("https://github.com/d0p1s4m4/libminicli/issues"); /* optional */
+
+    while ((c = mcli_get_argument(arguments, argc, argv)) != EOF)
+      {
+	switch (c)
+	  {
+	    default:
+	      mcli_usage(arguments, EXIT_FAILURE);
+	      break;
+	  }
+      }
+    return (EXIT_SUCCESS);
+  }
+#+END_SRC

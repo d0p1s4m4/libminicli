@@ -11,6 +11,8 @@ static const MCliArgument arg_version = {
   'V', "version", MCLI_NO_VALUE, "output version information"
 };
 
+const char *mcli_value = NULL;
+
 static void
 cli_emit_help(const MCliArgument *arg)
 {
@@ -102,6 +104,8 @@ mcli_get_argument(const MCliArgument *arguments, int argc, char **argv)
 
   a_s = -1;
   a_l = NULL;
+
+  mcli_value = argv[ac];
 
   if (argv[ac][0] == '-')
     {

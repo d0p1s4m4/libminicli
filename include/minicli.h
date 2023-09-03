@@ -34,6 +34,8 @@ void mcli_usage(const MCliArgument *arguments, int status);
 void mcli_version(void);
 int mcli_get_argument(const MCliArgument *arguments, int argc, char **argv);
 
+extern const char *mcli_value;
+
 # ifdef __cplusplus
 }
 # endif /* __cplusplus */
