@@ -4,11 +4,11 @@
 #include <minicli.h>
 
 static const MCliArgument arg_help = {
-  'h', "help", CLI_NO_VALUE, "display this help and exit"
+  'h', "help", MCLI_NO_VALUE, "display this help and exit"
 };
 
 static const MCliArgument arg_version = {
-  'V', "version", CLI_NO_VALUE, "output version information"
+  'V', "version", MCLI_NO_VALUE, "output version information"
 };
 
 static void
@@ -26,21 +26,21 @@ cli_emit_help(const MCliArgument *arg)
 }
 
 void
-cli_usage(const MCliArgument *arguments, int status)
+mcli_usage(const MCliArgument *arguments, int status)
 {
   int idx;
 
   if (status != EXIT_SUCCESS)
     {
       fprintf(stderr, "Try '%s --help' for more information.\n",
-	      get_program_name());
+	      mcli_get_program_name());
     }
   else
     {
-      printf("Usage: %s [OPTION...]\n", get_program_name());
-      if (get_program_desc() != NULL)
+      printf("Usage: %s [OPTION...]\n", mcli_get_program_name());
+      if (mcli_get_program_desc() != NULL)
 	{
-	  printf("%s\n\n", get_program_desc());
+	  printf("%s\n\n", mcli_get_program_desc());
 	}
       for (idx = 0; arguments[idx].help_string != NULL; idx++)
 	{
@@ -48,9 +48,9 @@ cli_usage(const MCliArgument *arguments, int status)
 	}
       cli_emit_help(&arg_help);
       cli_emit_help(&arg_version);
-      if (get_program_bugreport())
+      if (mcli_get_program_bugreport())
 	{
-	  printf("\nReport bugs to <%s>\n", get_program_bugreport());
+	  printf("\nReport bugs to <%s>\n", mcli_get_program_bugreport());
 	}
     }
 
@@ -58,9 +58,9 @@ cli_usage(const MCliArgument *arguments, int status)
 }
 
 void
-cli_version(void)
+mcli_version(void)
 {
-  printf("%s version %s\n", get_program_name(), get_program_version());
+  printf("%s version %s\n", mcli_get_program_name(), mcli_get_program_version());
   exit(EXIT_SUCCESS);
 }
 
@@ -88,7 +88,7 @@ cli_match(const MCliArgument *arg, int a_s, const char *a_l)
 }
 
 int
-cli_get_argument(const MCliArgument *arguments, int argc, char **argv)
+mcli_get_argument(const MCliArgument *arguments, int argc, char **argv)
 {
   static int ac = 1;
   int a_s;
@@ -118,11 +118,11 @@ cli_get_argument(const MCliArgument *arguments, int argc, char **argv)
 
   if (cli_match(&arg_help, a_s, a_l))
     {
-      cli_usage(arguments, EXIT_SUCCESS);
+      mcli_usage(arguments, EXIT_SUCCESS);
     }
   if (cli_match(&arg_version, a_s, a_l))
     {
-      cli_version();
+      mcli_version();
     }
 
   for (idx = 0; arguments[idx].help_string != NULL; idx++)

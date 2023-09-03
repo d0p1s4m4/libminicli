@@ -1,4 +1,4 @@
-#ifnef MINICLI_H
+#ifndef MINICLI_H
 # define MINICLI_H
 
 # ifdef __cplusplus

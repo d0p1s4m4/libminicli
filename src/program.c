@@ -13,7 +13,7 @@ static const char *program_version = NULL;
 static const char *program_bugreport = NULL;
 
 const char *
-get_program_name(void)
+mcli_get_program_name(void)
 {
   if (program_name == NULL)
     {
@@ -24,7 +24,7 @@ get_program_name(void)
 }
 
 void
-set_program_name(const char *name)
+mcli_set_program_name(const char *name)
 {
   char *tmp;
 
@@ -40,13 +40,13 @@ set_program_name(const char *name)
 }
 
 const char *
-get_program_desc(void)
+mcli_get_program_desc(void)
 {
   return (program_desc);
 }
 
 void
-set_program_desc(const char *desc)
+mcli_set_program_desc(const char *desc)
 {
   program_desc = desc;
 }
@@ -62,19 +62,19 @@ get_program_version(void)
 }
 
 void
-set_program_version(const char *version)
+mcli_set_program_version(const char *version)
 {
   program_version = version;
 }
 
 const char *
-get_program_bugreport(void)
+mcli_get_program_bugreport(void)
 {
   return (program_bugreport);
 }
 
 void
-set_prgram_bugreport(const char *bugreport)
+mcli_set_program_bugreport(const char *bugreport)
 {
   program_bugreport = bugreport;
 }
