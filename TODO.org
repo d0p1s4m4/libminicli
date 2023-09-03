@@ -1,0 +1,4 @@
+* TODO
+
+- Add support multiples flags in one (eg: ~-abc~ for flags: =a=, =b=, =c=)
+- Add support for ~-a=value~ / ~--arg=value~ form
