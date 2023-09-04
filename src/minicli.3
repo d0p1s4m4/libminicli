@@ -1,0 +1,67 @@
+.Dd $Mdocdate: September 04 2023 $
+.Dt MINICLI 3
+.Os
+.Sh NAME
+.Nm minicli
+.Nd Simple CLI parser
+.Sh LIBRARY
+.Lb libminicli
+.Sh SYNOPSIS
+.In minicli.h
+.Ft const char *
+.Fn mcli_get_program_name void
+.Ft void
+.Fn mcli_set_program_name "const char *name"
+.Ft const char *
+.Fn mcli_get_program_desc void
+.Ft void
+.Fn mcli_set_program_desc "const char *desc"
+.Ft const char *
+.Fn mcli_get_program_version void
+.Ft void
+.Fn mcli_set_program_version "const char *version"
+.Ft const char *
+.Fn mcli_get_program_bugreport void
+.Ft void
+.Fn mcli_set_program_bugreport "const char *bugreport"
+.Ft void
+.Fn mcli_usage "const MCliArgument *arguments" "int status"
+.Ft void
+.Fn mcli_version void
+.Ft int
+.Fn mcli_get_argument "const MCliArgument *arguments" "int argc" "char **argv"
+.Vt "const char *mcli_value"
+.Sh DESCRIPTION
+.Sh EXAMPLES
+.Bd -literal -offset indent
+  #include <stdlib.h>
+  #include <stdio.h>
+  #include <minicli.h>
+
+  static const CliArgument arguments[] = {
+    {0, NULL, 0, NULL}
+  };
+
+  int
+  main(int argc, char **argv)
+  {
+    int c;
+
+    mcli_set_program_name(argv[0]);
+    mcli_set_version("1.0.0");
+    mcli_set_desc("Just a simple example"); /* optional */
+    mcli_set_bugreport("https://github.com/d0p1s4m4/libminicli/issues"); /* optional */
+
+    while ((c = mcli_get_argument(arguments, argc, argv)) != EOF)
+      {
+	switch (c)
+	  {
+	    default:
+	      mcli_usage(arguments, EXIT_FAILURE);
+	      break;
+	  }
+      }
+    return (EXIT_SUCCESS);
+  }
+.Ed
+.Sh SEE ALSO

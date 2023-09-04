@@ -12,6 +12,17 @@ AC_CONFIG_FILES([
 
 AM_INIT_AUTOMAKE([foreign subdir-objects -Werror -Wall])
 
+AC_CONFIG_HEADERS([config.h])
+AH_TOP([
+#ifndef MINICLI_CONFIG_H
+# define MINICLI_CONFIG_H 1
+])
+
+AH_BOTTOM([
+#endif /* !MINICLI_CONFIG_H */
+])
+
+
 AC_LANG([C])
 AC_PROG_CC
 AC_PROG_CPP
@@ -21,5 +32,8 @@ AC_PROG_INSTALL
 AM_PROG_CC_C_O
 
 AC_C_CONST
+
+AC_CHECK_HEADER([libgen.h],
+    [AC_DEFINE(HAVE_LIBGEN_H, 1, Define if libgen.h exist)])
 
 AC_OUTPUT

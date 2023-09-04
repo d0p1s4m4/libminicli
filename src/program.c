@@ -30,6 +30,10 @@
  */
 #include <stdlib.h>
 #include <string.h>
+#include "config.h"
+#ifdef HAVE_LIBGEN_H
+# include <libgen.h>
+#endif /* HAVE_LIBGEN_H */
 
 #if defined(_WIN32) && !defined(__CYGWIN__)
 # define PATH_SEP '\\'
@@ -58,6 +62,10 @@ mcli_set_program_name(const char *name)
 {
   char *tmp;
 
+#ifdef HAVE_LIBGEN_H
+  tmp = (char *)name;
+  program_name = basename(tmp);
+#else
   tmp = strrchr(name, PATH_SEP);
   if (tmp != NULL)
     {
@@ -67,6 +75,7 @@ mcli_set_program_name(const char *name)
     {
       program_name = tmp;
     }
+#endif /* !HAVE_LIBGEN_H */
 }
 
 const char *
