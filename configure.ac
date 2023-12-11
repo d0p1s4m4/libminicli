@@ -9,10 +9,10 @@ AC_CONFIG_FILES([
 	include/Makefile
 	src/Makefile
 	test/Makefile
+	libminicli.pc
 ])
 
 AM_INIT_AUTOMAKE([foreign subdir-objects -Werror -Wall])
-LT_INIT
 
 AC_CONFIG_HEADERS([config.h])
 AH_TOP([
