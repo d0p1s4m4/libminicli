@@ -2,3 +2,8 @@
 
 - Add support multiples flags in one (eg: ~-abc~ for flags: =a=, =b=, =c=)
 - Add support for ~-a=value~ / ~--arg=value~ form
+- Windows cli style ? (eg: ~/h~ instead of ~-h~)
+- gettext
+- ANSI color/formating (and NO_COLORS)
+- github CI
+- tests
