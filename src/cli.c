@@ -147,7 +147,20 @@ mcli_get_argument(const MCliArgument *arguments, int argc, char **argv)
 	{
 	  a_s = argv[ac][1];
 	}
+	}
+#ifdef _WIN32
+  else if (argv[ac][0] == '/')
+    {
+      if (strlen(argv[ac]) >= 2)
+	{
+	  a_l = argv[ac] + 1;
+	}
+      else
+	{
+	  a_s = argv[ac][1];
+	}
     }
+#endif /* !_WIN32 */
   ac++;
 
   if (cli_match(&arg_help, a_s, a_l))
