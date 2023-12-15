@@ -24,7 +24,6 @@ AH_BOTTOM([
 #endif /* !MINICLI_CONFIG_H */
 ])
 
-
 AC_LANG([C])
 AC_PROG_CC
 AC_PROG_CPP

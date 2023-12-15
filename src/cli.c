@@ -110,10 +110,7 @@ cli_match(const MCliArgument *arg, int a_s, const char *a_l)
 
   if (a_l && arg->long_name)
     {
-      if (strlen(a_l) > 2)
-	{
-	  return (strcmp(a_l + 2, arg->long_name) == 0);
-	}
+	  return (strcmp(a_l, arg->long_name) == 0);
     }
 
   return (0);
@@ -147,11 +144,11 @@ mcli_get_argument(const MCliArgument *arguments, int argc, char **argv)
 	{
 	  a_s = argv[ac][1];
 	}
-	}
-#ifdef _WIN32
+    }
+#ifdef __WIN32__
   else if (argv[ac][0] == '/')
     {
-      if (strlen(argv[ac]) >= 2)
+      if (strlen(argv[ac]) > 2)
 	{
 	  a_l = argv[ac] + 1;
 	}
@@ -160,7 +157,7 @@ mcli_get_argument(const MCliArgument *arguments, int argc, char **argv)
 	  a_s = argv[ac][1];
 	}
     }
-#endif /* !_WIN32 */
+#endif /* !__WIN32__ */
   ac++;
 
   if (cli_match(&arg_help, a_s, a_l))

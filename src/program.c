@@ -35,7 +35,7 @@
 # include <libgen.h>
 #endif /* HAVE_LIBGEN_H */
 
-#if defined(_WIN32) && !defined(__CYGWIN__)
+#if defined(__WIN32__) && !defined(__CYGWIN__)
 # define PATH_SEP '\\'
 #else
 # define PATH_SEP '/'
@@ -91,7 +91,7 @@ mcli_set_program_desc(const char *desc)
 }
 
 const char *
-get_program_version(void)
+mcli_get_program_version(void)
 {
   if (program_version == NULL)
     {

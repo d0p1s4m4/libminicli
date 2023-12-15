@@ -9,7 +9,7 @@ Simple cli parser in c.
   #include <stdio.h>
   #include <minicli.h>
 
-  static const CliArgument arguments[] = {
+  static const MCliArgument arguments[] = {
     {0, NULL, 0, NULL}
   };
 
@@ -19,9 +19,9 @@ Simple cli parser in c.
     int c;
 
     mcli_set_program_name(argv[0]);
-    mcli_set_version("1.0.0");
-    mcli_set_desc("Just a simple example"); /* optional */
-    mcli_set_bugreport("https://github.com/d0p1s4m4/libminicli/issues"); /* optional */
+    mcli_set_program_version("1.0.0");
+    mcli_set_program_desc("Just a simple example"); /* optional */
+    mcli_set_program_bugreport("https://github.com/d0p1s4m4/libminicli/issues"); /* optional */
 
     while ((c = mcli_get_argument(arguments, argc, argv)) != EOF)
       {
