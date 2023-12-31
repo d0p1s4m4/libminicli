@@ -51,6 +51,8 @@ typedef struct
   const char *help_string;
 } MCliArgument;
 
+void mcli_initialize(void);
+
 const char *mcli_get_program_name(void);
 void mcli_set_program_name(const char *name);
 const char *mcli_get_program_desc(void);

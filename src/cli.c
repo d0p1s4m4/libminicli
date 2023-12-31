@@ -33,6 +33,11 @@
 #include <string.h>
 #include <minicli.h>
 
+#include "config.h"
+#include "gettext.h"
+
+#define _(str) dgettext(PACKAGE, str)
+
 static const MCliArgument arg_help = {
   'h', "help", MCLI_NO_VALUE, "display this help and exit"
 };
@@ -64,12 +69,12 @@ mcli_usage(const MCliArgument *arguments, int status)
 
   if (status != EXIT_SUCCESS)
     {
-      fprintf(stderr, "Try '%s --help' for more information.\n",
+      fprintf(stderr, _("Try '%s --help' for more information.\n"),
 	      mcli_get_program_name());
     }
   else
     {
-      printf("Usage: %s [OPTION...]\n", mcli_get_program_name());
+      printf(_("Usage: %s [OPTION...]\n"), mcli_get_program_name());
       if (mcli_get_program_desc() != NULL)
 	{
 	  printf("%s\n\n", mcli_get_program_desc());
@@ -82,7 +87,7 @@ mcli_usage(const MCliArgument *arguments, int status)
       cli_emit_help(&arg_version);
       if (mcli_get_program_bugreport())
 	{
-	  printf("\nReport bugs to <%s>\n", mcli_get_program_bugreport());
+	  printf(_("\nReport bugs to <%s>\n"), mcli_get_program_bugreport());
 	}
     }
 
@@ -92,7 +97,7 @@ mcli_usage(const MCliArgument *arguments, int status)
 void
 mcli_version(void)
 {
-  printf("%s version %s\n", mcli_get_program_name(), mcli_get_program_version());
+  printf(_("%s version %s\n"), mcli_get_program_name(), mcli_get_program_version());
   exit(EXIT_SUCCESS);
 }
 

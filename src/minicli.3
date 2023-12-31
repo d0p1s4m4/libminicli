@@ -8,6 +8,8 @@
 .Lb libminicli
 .Sh SYNOPSIS
 .In minicli.h
+.Ft void
+.Fn mcli_initialize void
 .Ft const char *
 .Fn mcli_get_program_name void
 .Ft void
@@ -47,6 +49,8 @@
   {
     int c;
 
+    mcli_initialize();
+    
     mcli_set_program_name(argv[0]);
     mcli_set_version("1.0.0");
     mcli_set_desc("Just a simple example"); /* optional */

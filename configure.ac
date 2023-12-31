@@ -4,7 +4,7 @@ AC_COPYRIGHT([Copyright (C) 2023 d0p1])
 AC_CONFIG_SRCDIR([src/cli.c])
 AC_CONFIG_MACRO_DIRS([m4])
 
-AC_CONFIG_FILES([
+AC_CONFIG_FILES([ po/Makefile.in
 	Makefile
 	include/Makefile
 	src/Makefile
@@ -13,6 +13,9 @@ AC_CONFIG_FILES([
 ])
 
 AM_INIT_AUTOMAKE([foreign subdir-objects -Werror -Wall])
+
+AM_GNU_GETTEXT([external])
+AM_GNU_GETTEXT_VERSION([0.20])
 
 AC_CONFIG_HEADERS([config.h])
 AH_TOP([

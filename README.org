@@ -18,6 +18,8 @@ Simple cli parser in c.
   {
     int c;
 
+    mcli_initialize();
+
     mcli_set_program_name(argv[0]);
     mcli_set_program_version("1.0.0");
     mcli_set_program_desc("Just a simple example"); /* optional */

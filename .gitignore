@@ -56,3 +56,20 @@ build/
 
 # IDE
 .vs
+
+*~
+POTFILES
+/configure
+*.guess
+*.sub
+*.cache
+.deps
+.libs
+stamp-h1
+Makefile
+Makefile.in
+*.log
+*.pc
+/config.h
+/config.h.in
+*.gmo
