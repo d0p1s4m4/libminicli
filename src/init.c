@@ -10,8 +10,10 @@ mcli_initialize(void)
     {
       return;
     }
-  
+
+#ifdef ENABLE_NLS
   bindtextdomain(PACKAGE, LOCALEDIR);
+#endif
 
   mcli_initialized = 1;
 }
